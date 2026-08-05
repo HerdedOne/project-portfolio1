@@ -21,6 +21,7 @@ int main()
         {
         case 1:
             std::cout << "The game is playing\n\n";
+            // will start cooking
             break;
         case 2:
             std::cout << "Goodbye\n";
@@ -34,7 +35,7 @@ int main()
     }
 }
 
-void clear()
+void clear() //clears the screen
 {
     std::cout << "\033[H\033[2J" << std::flush;
 }
