@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Cooking.h"
 
 void clear(); //forward declration to clear screen
 
@@ -10,6 +11,8 @@ int main()
 
     std::string input; //will hold user input and change to menu choice
     int choice;
+
+    Cooking food;
 
     while (running)
     {
@@ -22,6 +25,7 @@ int main()
         case 1:
             std::cout << "The game is playing\n\n";
             // will start cooking
+            food.startCooking();
             break;
         case 2:
             std::cout << "Goodbye\n";

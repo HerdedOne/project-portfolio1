@@ -5,7 +5,7 @@ struct Ingrediant
 	Ingrediant(std::string name) //constructor
 	{
 		name_ = name;
-		amount_ = 0;
+		amount_ = 1;
 	}
 
 	void addMore() //add another of it
