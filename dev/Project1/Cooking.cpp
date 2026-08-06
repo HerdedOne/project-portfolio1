@@ -44,10 +44,14 @@ void Cooking::startCooking()
             break;
         case 5:
             std::cout << "mixing ingrediants together...\n\n";
+            for (auto& b : myFood.getIngrediants()) //see what we are mixing together
+            {
+                std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
+            }
             running = false;
             break;
         default: //entered something invalid
-            std::cout << "You added air, it did nothoing. \n\n";
+            std::cout << "You added air, it did nothing. \n\n";
             break;
         }
     }
