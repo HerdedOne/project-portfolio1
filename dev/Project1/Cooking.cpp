@@ -6,7 +6,6 @@ void Cooking::startCooking()
 {
 	//main interface making ingrediants to choose from
     std::cout << "Lets get cooking!\n"; //lets you know what we are doing
-    bool running = true; //makes game run
 
     std::string input; //will hold user input and change to menu choice
     int choice;
@@ -18,9 +17,10 @@ void Cooking::startCooking()
     Ingrediant flour("Flour");
     Ingrediant sugar("Sugar");
 
-    while (running)
+    for (int count = 0; count < 4; count++)
     {
-        std::cout << "would you like to add to the bowl? \n1) Eggs \n2) Milk \n3) Flour \n4) Sugar \n5) Mix\n\n";
+        std::cout << "You may add only 4 Ingredients\n"; //ingredient cap meets for loop conditions
+        std::cout << "would you like to add to the bowl? \n1) Eggs \n2) Milk \n3) Flour \n4) Sugar \n\n";
         std::cin >> input;
         choice = std::stoi(input);
 
@@ -42,17 +42,17 @@ void Cooking::startCooking()
             std::cout << "Sugar added\n";
             myFood.addToBowl(sugar);
             break;
-        case 5:
-            std::cout << "mixing ingrediants together...\n\n";
-            for (auto& b : myFood.getIngrediants()) //see what we are mixing together
-            {
-                std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
-            }
-            running = false;
-            break;
         default: //entered something invalid
             std::cout << "You added air, it did nothing. \n\n";
+            count--; //this was not actually an ingredient....
             break;
         }
     }
+    //outside of for loop so this happens only after for loop conditions are met.
+    std::cout << "mixing ingrediants together...\n\n"; 
+    for (auto& b : myFood.getIngrediants()) //see what we are mixing together
+    {
+        std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
+    }
 }
+

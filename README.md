@@ -44,7 +44,9 @@ Each week I will summarize my milestone activity and progress by writing a stand
 
 ### Week 1
 
-Replace this paragraph with your stand up for this week. Use the prompts above to summarize your most recent milestone activity and work.
+Week 1 Stand Up for: "Secret Ingredient"
+
+I have managed to implement a menu, with start and exit. I have also created the ingredient and cooking class, where you may add the ingredients to a vector. The current hurdle is recipe's, which will likely be my main focus next week, and then week 3 will be customers. I plan to dedicate more time to the cooking menu, making sure each ingredient holds the proper data.
 
 ### Week 2
 
