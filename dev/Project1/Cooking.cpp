@@ -19,11 +19,17 @@ void Cooking::startCooking()
     Ingrediant milk("Milk");
     Ingrediant flour("Flour");
     Ingrediant sugar("Sugar");
+    Ingrediant oil("Oil");
+    Ingrediant butter("Butter");
+    Ingrediant vanilla("Vanilla");
 
     options.addToBowl(egg);
     options.addToBowl(milk);
     options.addToBowl(flour);
     options.addToBowl(sugar);
+    options.addToBowl(oil);
+    options.addToBowl(butter);
+    options.addToBowl(vanilla);
 
     for (int count = 0; count < 4; count++)
     {
