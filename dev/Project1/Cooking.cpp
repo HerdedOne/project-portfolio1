@@ -1,10 +1,12 @@
 #include "Cooking.h"
 #include <iostream>
 #include <string>
+#include "Graphics.h"
 
 void Cooking::startCooking()
 {
 	//main interface making ingrediants to choose from
+    Graphics::clear();
     std::cout << "Lets get cooking!\n"; //lets you know what we are doing
 
     std::string input; //will hold user input and change to menu choice
@@ -27,22 +29,28 @@ void Cooking::startCooking()
         switch (choice) //menu directory for adding
         {
         case 1:
+            Graphics::clear();
             std::cout << "Egg added\n";
             myFood.addToBowl(egg);
             break;
         case 2:
+            Graphics::clear();
             std::cout << "Milk added\n";
             myFood.addToBowl(milk);
             break;
         case 3:
+            Graphics::clear();
             std::cout << "Flour added\n";
             myFood.addToBowl(flour);
             break;
+   
         case 4:
+            Graphics::clear();
             std::cout << "Sugar added\n";
             myFood.addToBowl(sugar);
             break;
         default: //entered something invalid
+            Graphics::clear();
             std::cout << "You added air, it did nothing. \n\n";
             count--; //this was not actually an ingredient....
             break;
