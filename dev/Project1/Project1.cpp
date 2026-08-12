@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include "Cooking.h"
-
-void clear(); //forward declration to clear screen
+#include "Graphics.h"
 
 int main()
 {
+    Graphics myGraphics; //allows me to use the graphics class and methods
     std::cout << "Welcome to Secret Ingrediant!\n"; //title of game
     bool running = true; //makes game run
 
@@ -32,14 +32,10 @@ int main()
             running = false;
             break;
         default: //entered something invalid
-            clear();
+            Graphics::clear();
             std::cout << "Whoopsie, you entered something in INCORRECTLY. >:C \n\n";
             break;
         }
     }
 }
 
-void clear() //clears the screen
-{
-    std::cout << "\033[H\033[2J" << std::flush;
-}
