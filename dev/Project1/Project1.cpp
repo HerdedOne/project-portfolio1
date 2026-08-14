@@ -18,24 +18,33 @@ int main()
     {
         std::cout << "What would you like to do? \n1) PLAY \n2) EXIT \n\n";
         std::cin >> input;
-        choice = std::stoi(input);
 
-        switch (choice) //actual menu directory
+        try 
         {
-        case 1:
-            std::cout << "The game is playing\n\n";
-            // will start cooking
-            food.startCooking();
-            break;
-        case 2:
-            std::cout << "Goodbye\n";
-            running = false;
-            break;
-        default: //entered something invalid
-            Graphics::clear();
-            std::cout << "Whoopsie, you entered something in INCORRECTLY. >:C \n\n";
-            break;
+            choice = std::stoi(input);
+            switch (choice) //actual menu directory
+            {
+            case 1:
+                std::cout << "The game is playing\n\n";
+                // will start cooking
+                food.startCooking();
+                break;
+            case 2:
+                std::cout << "Goodbye\n";
+                running = false;
+                break;
+            default: //entered something invalid
+                Graphics::clear();
+                std::cout << "Whoopsie, you entered something in INCORRECTLY. >:C \n\n";
+                break;
+            }
         }
+        catch (const std::invalid_argument& e)
+        {
+            Graphics::clear();
+            std::cout << """Whoopsie, you entered something in INCORRECTLY. >:C \n\n";
+        }
+
     }
 }
 

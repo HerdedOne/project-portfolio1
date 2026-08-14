@@ -57,19 +57,29 @@ void Cooking::startCooking()
             num += 1;
         }
         std::cin >> input;
-        choice = std::stoi(input);
 
-        if (choice < 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
+        try
+        {
+            choice = std::stoi(input);
+
+            if (choice < 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
+            {
+                Graphics::clear();
+                std::cout << "You added air, it did nothing. \n\n";
+                count--; //this was not actually an ingredient....
+            }
+            else //converts user answer to ingredient
+            {
+                Graphics::clear();
+                std::cout << options.bowl_.at(choice - 1).getName() << " added\n";
+                myFood.addToBowl(options.bowl_.at(choice - 1));
+            }
+        }
+        catch (const std::invalid_argument& e)
         {
             Graphics::clear();
             std::cout << "You added air, it did nothing. \n\n";
             count--; //this was not actually an ingredient....
-        }
-        else //converts user answer to ingredient
-        {
-            Graphics::clear();
-            std::cout << options.bowl_.at(choice -1).getName() <<" added\n";
-            myFood.addToBowl(options.bowl_.at(choice - 1));
         }
     }
 
