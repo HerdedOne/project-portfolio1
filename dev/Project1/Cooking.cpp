@@ -15,21 +15,35 @@ void Cooking::startCooking()
     Cooking options; //the list of ingredients to choose from
 
     //the ingrediant options
-    Ingrediant egg("Egg");
-    Ingrediant milk("Milk");
     Ingrediant flour("Flour");
     Ingrediant sugar("Sugar");
-    Ingrediant oil("Oil");
+    Ingrediant molasses("Molasses");
+    Ingrediant honey("Honey");
+    Ingrediant water("Water");
+    Ingrediant egg("Egg");
+    Ingrediant eggYolk("Egg Yolk");
+    Ingrediant eggWhite("Egg White");
+    Ingrediant yeast("Yeast");
     Ingrediant butter("Butter");
-    Ingrediant vanilla("Vanilla");
+    Ingrediant oil("Oil");
+    Ingrediant milk("Milk");
+    Ingrediant cheese("Cheese");
+    Ingrediant oats("Oats");
 
-    options.addToBowl(egg);
-    options.addToBowl(milk);
     options.addToBowl(flour);
     options.addToBowl(sugar);
-    options.addToBowl(oil);
+    options.addToBowl(molasses);
+    options.addToBowl(honey);
+    options.addToBowl(water);
+    options.addToBowl(egg);
+    options.addToBowl(eggYolk);
+    options.addToBowl(eggWhite);
+    options.addToBowl(yeast);
     options.addToBowl(butter);
-    options.addToBowl(vanilla);
+    options.addToBowl(oil);
+    options.addToBowl(milk);
+    options.addToBowl(cheese);
+    options.addToBowl(oats);
 
     for (int count = 0; count < 4; count++)
     {
