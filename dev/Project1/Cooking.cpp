@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Graphics.h"
+#include "Recipe.h"
 
 void Cooking::startCooking()
 {
@@ -84,9 +85,16 @@ void Cooking::startCooking()
     }
 
     std::cout << "mixing ingrediants together...\n\n"; 
-    for (auto& b : myFood.getIngrediants()) //see what we are mixing together
+    //creating something
+
+    Cooking creation = myFood;
+    Recipe myDish = Recipe::CookSomething(creation);
+    std::cout << "You made: " << myDish.getName() << "\n";
+
+    for (auto& b : myDish.getBowl()) //see what we are mixing together
     {
         std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
     }
+    std::cout << "\n\n";
 }
 

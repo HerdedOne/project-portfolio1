@@ -14,7 +14,6 @@ int main()
     int choice;
 
     Cooking food;
-    Recipe dish; //testing recipes
 
     while (running)
     {
@@ -37,7 +36,7 @@ int main()
                 break;
             case 3: //testing recipes
                 std::cout << "Opening Recipe Book....\n";
-                dish.LoadRecipe("RecipeBook.configSV", dish, ',');
+                Recipe::OpenCookBook("RecipeBook.configSV", ',');
                 break;
             default: //entered something invalid
                 Graphics::clear();
