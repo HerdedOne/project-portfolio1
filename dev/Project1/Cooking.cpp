@@ -1,58 +1,100 @@
 #include "Cooking.h"
 #include <iostream>
 #include <string>
+#include "Graphics.h"
+#include "Recipe.h"
 
 void Cooking::startCooking()
 {
 	//main interface making ingrediants to choose from
+    Graphics::clear();
     std::cout << "Lets get cooking!\n"; //lets you know what we are doing
-    bool running = true; //makes game run
 
     std::string input; //will hold user input and change to menu choice
     int choice;
-    Cooking myFood;
+    Cooking myFood; //what we are adding to
+    Cooking options; //the list of ingredients to choose from
 
     //the ingrediant options
-    Ingrediant egg("Egg");
-    Ingrediant milk("Milk");
     Ingrediant flour("Flour");
     Ingrediant sugar("Sugar");
+    Ingrediant molasses("Molasses");
+    Ingrediant honey("Honey");
+    Ingrediant water("Water");
+    Ingrediant egg("Egg");
+    Ingrediant eggYolk("Egg Yolk");
+    Ingrediant eggWhite("Egg White");
+    Ingrediant yeast("Yeast");
+    Ingrediant butter("Butter");
+    Ingrediant oil("Oil");
+    Ingrediant milk("Milk");
+    Ingrediant cheese("Cheese");
+    Ingrediant oats("Oats");
 
-    while (running)
+    options.addToBowl(flour);
+    options.addToBowl(sugar);
+    options.addToBowl(molasses);
+    options.addToBowl(honey);
+    options.addToBowl(water);
+    options.addToBowl(egg);
+    options.addToBowl(eggYolk);
+    options.addToBowl(eggWhite);
+    options.addToBowl(yeast);
+    options.addToBowl(butter);
+    options.addToBowl(oil);
+    options.addToBowl(milk);
+    options.addToBowl(cheese);
+    options.addToBowl(oats);
+
+    for (int count = 0; count < 4; count++)
     {
-        std::cout << "would you like to add to the bowl? \n1) Eggs \n2) Milk \n3) Flour \n4) Sugar \n5) Mix\n\n";
-        std::cin >> input;
-        choice = std::stoi(input);
 
-        switch (choice) //menu directory for adding
+        std::cout << "You may add only 4 Ingredients\n"; //ingredient cap meets for loop conditions
+        std::cout << "would you like to add to the bowl? \n";
+        int num = 1;
+        for (auto& o : options.getIngrediants()) //shows list of options
         {
-        case 1:
-            std::cout << "Egg added\n";
-            myFood.addToBowl(egg);
-            break;
-        case 2:
-            std::cout << "Milk added\n";
-            myFood.addToBowl(milk);
-            break;
-        case 3:
-            std::cout << "Flour added\n";
-            myFood.addToBowl(flour);
-            break;
-        case 4:
-            std::cout << "Sugar added\n";
-            myFood.addToBowl(sugar);
-            break;
-        case 5:
-            std::cout << "mixing ingrediants together...\n\n";
-            for (auto& b : myFood.getIngrediants()) //see what we are mixing together
+            std::cout << num << ") " << o.getName() << "\n"; 
+            num += 1;
+        }
+        std::cin >> input;
+
+        try
+        {
+            choice = std::stoi(input);
+
+            if (choice < 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
             {
-                std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
+                Graphics::clear();
+                std::cout << "You added air, it did nothing. \n\n";
+                count--; //this was not actually an ingredient....
             }
-            running = false;
-            break;
-        default: //entered something invalid
+            else //converts user answer to ingredient
+            {
+                Graphics::clear();
+                std::cout << options.bowl_.at(choice - 1).getName() << " added\n";
+                myFood.addToBowl(options.bowl_.at(choice - 1));
+            }
+        }
+        catch (const std::invalid_argument& e)
+        {
+            Graphics::clear();
             std::cout << "You added air, it did nothing. \n\n";
-            break;
+            count--; //this was not actually an ingredient....
         }
     }
+
+    std::cout << "mixing ingrediants together...\n\n"; 
+    //creating something
+
+    Cooking creation = myFood;
+    Recipe myDish = Recipe::CookSomething(creation);
+    std::cout << "You made: " << myDish.getName() << "\n";
+
+    for (auto& b : myDish.getBowl()) //see what we are mixing together
+    {
+        std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
+    }
+    std::cout << "\n\n";
 }
+

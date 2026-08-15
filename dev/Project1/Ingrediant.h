@@ -23,6 +23,14 @@ struct Ingrediant
 		return amount_;
 	}
 
+	bool operator<(const Ingrediant& other) const {
+		return name_ < other.name_;
+	}
+
+	bool operator==(const Ingrediant& other) const {
+		return name_ == other.name_;
+	}
+
 	private: //private variables
 		std::string name_;
 		int amount_;
