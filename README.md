@@ -24,7 +24,7 @@ After completing the above steps, feel free to begin updating this readme where 
 
 ### Student First & Last Name
 
-Hello my name is [enter name]. I am a student from [where are you from?]. The purpose of this repository is to practice development using version control. This work will help me begin to build a portfolio of skills and accomplishment that can be shared in the future.
+Hello my name is [ELIZABETH PEZZUTO]. I am a student from [FLORIDA FULL SAIL UNIVERSITY]. The purpose of this repository is to practice development using version control. This work will help me begin to build a portfolio of skills and accomplishment that can be shared in the future.
 
 <br>
 
@@ -50,7 +50,13 @@ I have managed to implement a menu, with start and exit. I have also created the
 
 ### Week 2
 
-My next stand up will go here...
+What I've been working on this week, is cleaning up behind scenes, expanding the recipes, banana proofing my project, and biggest, cooking actually works!
+
+A large challenge was handling scope issues with checking between files and what is created, but taking short breaks mixed with plenty of googling.
+
+I say I've improved on my csv file reading!
+
+I plan to work on the point system, secret ingredients, and customers next!
 
 ### Week 3
 
