@@ -22,6 +22,11 @@ public:
 		return bowl_;
 	}
 
+	void emptyBowl()
+	{
+		bowl_.clear();
+	} //added for recipe sake, emptys vector
+
 	static void startCooking(); //will boot up the screen
 
 

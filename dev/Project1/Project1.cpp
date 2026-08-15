@@ -2,6 +2,7 @@
 #include <string>
 #include "Cooking.h"
 #include "Graphics.h"
+#include "Recipe.h"
 
 int main()
 {
@@ -13,10 +14,11 @@ int main()
     int choice;
 
     Cooking food;
+    Recipe dish; //testing recipes
 
     while (running)
     {
-        std::cout << "What would you like to do? \n1) PLAY \n2) EXIT \n\n";
+        std::cout << "What would you like to do? \n1) PLAY \n2) EXIT \n3) RECIPE BOOK \n\n";
         std::cin >> input;
 
         try 
@@ -32,6 +34,10 @@ int main()
             case 2:
                 std::cout << "Goodbye\n";
                 running = false;
+                break;
+            case 3: //testing recipes
+                std::cout << "Opening Recipe Book....\n";
+                dish.LoadRecipe("RecipeBook.configSV", dish, ',');
                 break;
             default: //entered something invalid
                 Graphics::clear();
