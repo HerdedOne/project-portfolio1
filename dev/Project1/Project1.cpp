@@ -12,9 +12,12 @@ int main()
     bool running = true; //makes game run
 
     std::string input; //will hold user input and change to menu choice
+    std::string something; //meaningless input
     int choice;
 
     Cooking food;
+    Customer bro;
+    Recipe myDish;
 
     while (running)
     {
@@ -29,7 +32,13 @@ int main()
             case 1:
                 std::cout << "The game is playing\n\n";
                 // will start cooking
-                food.startCooking();
+                bro.SetWant(bro.findRandomRecipe());
+                bro.Dialogue(bro);
+
+                std::cout << "\nEnter something to begin cooking!\n";
+                std::cin >> something;
+                myDish = food.startCooking();
+                bro.satisfyCustomer(bro, myDish);
                 break;
             case 2:
                 std::cout << "Goodbye\n";

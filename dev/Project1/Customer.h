@@ -26,7 +26,7 @@ public:
 
 	Recipe findRandomRecipe();
 	Ingrediant findRandomTwist();
-	void Dialogue(Customer loyalCustomer);
-	void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade);
+	static void Dialogue(Customer myCustomer);
+	static void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade);
 };
 

@@ -4,7 +4,7 @@
 #include "Graphics.h"
 #include "Recipe.h"
 
-void Cooking::startCooking()
+Recipe Cooking::startCooking()
 {
 	//main interface making ingrediants to choose from
     Graphics::clear();
@@ -89,6 +89,7 @@ void Cooking::startCooking()
 
     Cooking creation = myFood;
     Recipe myDish = Recipe::CookSomething(creation);
+    
     std::cout << "You made: " << myDish.getName() << "\n";
 
     for (auto& b : myDish.getBowl()) //see what we are mixing together
@@ -96,5 +97,7 @@ void Cooking::startCooking()
         std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
     }
     std::cout << "\n\n";
+
+    return myDish;
 }
 

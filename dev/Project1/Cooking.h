@@ -1,6 +1,9 @@
 #pragma once
 #include "Ingrediant.h"
 #include <vector>
+
+class Recipe; //forward declaration
+
 class Cooking
 {
 public:
@@ -27,7 +30,7 @@ public:
 		bowl_.clear();
 	} //added for recipe sake, emptys vector
 
-	static void startCooking(); //will boot up the screen
+	static Recipe startCooking(); //will boot up the screen
 
 
 private:

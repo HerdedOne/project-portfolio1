@@ -54,12 +54,12 @@ Recipe Customer::findRandomRecipe()
 
 Ingrediant findRandomTwist();
 
-void Dialogue(Customer loyalCustomer)
+void Customer::Dialogue(Customer myCustomer)
 {
-	std::cout << "Hello! I am a loyal customer, and I would love a " << loyalCustomer.GetWant().getName() << ", MAKE IT FOR ME NOW!" << std::endl;
+	std::cout << "Hello! I am a loyal customer, and I would love a " << myCustomer.GetWant().getName() << ", MAKE IT FOR ME NOW!" << std::endl;
 }
 
-void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
+void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
 {
     std::vector<Ingrediant> customerBowl = loyalCustomer.GetWant().getBowl();
     std::vector<Ingrediant> madeBowl = whatYouMade.getBowl();
@@ -70,10 +70,6 @@ void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
     if (whatYouMade.getName() == loyalCustomer.GetWant().getName())
     {
         std::cout << "This is EXACTLY what I wanted!! Thank you so much for making me " << whatYouMade.getName() << "\n";
-    }
-    else if (whatYouMade.getName() == "Slop")
-    {
-        std::cout << "EWW, WHY DID YOU HAND ME THIS?? \n";
     }
     else
     {
@@ -105,6 +101,10 @@ void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
         {
             std::cout << "This is almost what I wanted... Here's the recipe \n";
             //GIVE RECIPE TO PLAYER COOKBOOK
+        }
+        else if (whatYouMade.getName() == "Slop")
+        {
+            std::cout << "EWW, WHY DID YOU HAND ME THIS?? \n";
         }
         else
         {
