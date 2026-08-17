@@ -54,4 +54,62 @@ Recipe Customer::findRandomRecipe()
 
 Ingrediant findRandomTwist();
 
-void Dialogue();
+void Dialogue(Customer loyalCustomer)
+{
+	std::cout << "Hello! I am a loyal customer, and I would love a " << loyalCustomer.GetWant().getName() << ", MAKE IT FOR ME NOW!" << std::endl;
+}
+
+void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
+{
+    std::vector<Ingrediant> customerBowl = loyalCustomer.GetWant().getBowl();
+    std::vector<Ingrediant> madeBowl = whatYouMade.getBowl();
+
+    std::sort(customerBowl.begin(), customerBowl.end());
+    std::sort(madeBowl.begin(), madeBowl.end());
+
+    if (whatYouMade.getName() == loyalCustomer.GetWant().getName())
+    {
+        std::cout << "This is EXACTLY what I wanted!! Thank you so much for making me " << whatYouMade.getName() << "\n";
+    }
+    else if (whatYouMade.getName() == "Slop")
+    {
+        std::cout << "EWW, WHY DID YOU HAND ME THIS?? \n";
+    }
+    else
+    {
+        size_t matchCount = 0;
+        size_t i = 0; // index for customerBowl
+        size_t j = 0; // index for madeBowl
+
+        //checks if an item is the same
+        while (i < customerBowl.size() and j < madeBowl.size())
+        {
+            if (customerBowl[i] == madeBowl[j])
+            {
+                matchCount++;
+                i++;
+                j++; //it matches, checks the next one
+            }
+            else if (customerBowl[i] < madeBowl[j])
+            {
+                i++; //not even, so need to check next one
+            }
+            else
+            {
+                j++;
+            }
+        }
+
+        // if 3 items matched, it will give you the recipe, TO BE IMPLIMENTED
+        if (matchCount == 3)
+        {
+            std::cout << "This is almost what I wanted... Here's the recipe \n";
+            //GIVE RECIPE TO PLAYER COOKBOOK
+        }
+        else
+        {
+            std::cout << "This isn't what I ordered at all.\n";
+        }
+    }
+}
+
