@@ -3,6 +3,7 @@
 #include "Cooking.h"
 #include "Graphics.h"
 #include "Recipe.h"
+#include "Customer.h"
 
 int main()
 {
