@@ -1,6 +1,6 @@
 #include "Customer.h"
 #include <random>
-
+#include <iostream>
 
 Recipe Customer::findRandomRecipe()
 {
@@ -56,7 +56,7 @@ Ingrediant findRandomTwist();
 
 void Customer::Dialogue(Customer myCustomer)
 {
-	std::cout << "Hello! I am a loyal customer, and I would love a " << myCustomer.GetWant().getName() << ", MAKE IT FOR ME NOW!" << std::endl;
+	std::cout << "Hello! I am a loyal customer, and I would love a " << "\033[36m" << myCustomer.GetWant().getName() << "\033[0m" << ", MAKE IT FOR ME NOW!" << std::endl;
 }
 
 void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
@@ -69,7 +69,7 @@ void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
 
     if (whatYouMade.getName() == loyalCustomer.GetWant().getName())
     {
-        std::cout << "This is EXACTLY what I wanted!! Thank you so much for making me " << whatYouMade.getName() << "\n";
+        std::cout << "\033[32mThis is EXACTLY what I wanted!! Thank you so much for making me " << whatYouMade.getName() << "\033[0m\n";
     }
     else
     {
@@ -99,16 +99,16 @@ void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
         // if 3 items matched, it will give you the recipe, TO BE IMPLIMENTED
         if (matchCount == 3)
         {
-            std::cout << "This is almost what I wanted... Here's the recipe \n";
+            std::cout << "\033[33mThis is almost what I wanted... Here's the recipe \033[0m\n";
             //GIVE RECIPE TO PLAYER COOKBOOK
         }
         else if (whatYouMade.getName() == "Slop")
         {
-            std::cout << "EWW, WHY DID YOU HAND ME THIS?? \n";
+            std::cout << "\033[31mEWW, WHY DID YOU HAND ME THIS?? \033[0m\n";
         }
         else
         {
-            std::cout << "This isn't what I ordered at all.\n";
+            std::cout << "\033[31mThis isn't what I ordered at all.\033[0m\n";
         }
     }
 }

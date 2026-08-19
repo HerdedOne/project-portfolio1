@@ -3,6 +3,7 @@
 #include <vector>
 
 class Recipe; //forward declaration
+class Customer;
 
 class Cooking
 {
@@ -30,7 +31,7 @@ public:
 		bowl_.clear();
 	} //added for recipe sake, emptys vector
 
-	static Recipe startCooking(); //will boot up the screen
+	static Recipe startCooking(const Customer& bro); //will boot up the screen
 
 
 private:

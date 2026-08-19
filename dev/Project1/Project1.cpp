@@ -21,7 +21,12 @@ int main()
 
     while (running)
     {
-        std::cout << "What would you like to do? \n2) PLAY \n3) EXIT \n3) RECIPE BOOK \n\n";
+        Graphics::clear();
+
+        std::cout << "What would you like to do? \n1) PLAY \n2) RECIPE BOOK \n3) EXIT\n\n";
+
+        std::cout << "\033[1m (Type in a number listed, then press enter.) \033[0m\n";
+
         std::cin >> input;
 
         try 
@@ -30,6 +35,7 @@ int main()
             switch (choice) //actual menu directory
             {
             case 1:
+                Graphics::clear();
                 std::cout << "The game is playing\n\n";
                 // will start cooking
                 bro.SetWant(bro.findRandomRecipe()); //makes sure they will want something different every time
@@ -37,8 +43,10 @@ int main()
 
                 std::cout << "\nEnter something to begin cooking!\n"; //makes sure you can read before going into cooking
                 std::cin >> something;
-                myDish = food.startCooking();
+                myDish = food.startCooking(bro);
                 bro.satisfyCustomer(bro, myDish);
+                std::cout << "\nEnter something to go back to menu!\n"; //makes sure you can read before going into cooking
+                std::cin >> something;
                 break;
             case 2: //testing recipes
                 std::cout << "Opening Recipe Book....\n";

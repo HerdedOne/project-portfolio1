@@ -3,8 +3,9 @@
 #include <string>
 #include "Graphics.h"
 #include "Recipe.h"
+#include "Customer.h"
 
-Recipe Cooking::startCooking()
+Recipe Cooking::startCooking(const Customer& bro)
 {
 	//main interface making ingrediants to choose from
     Graphics::clear();
@@ -48,10 +49,19 @@ Recipe Cooking::startCooking()
 
     for (int count = 0; count < 4; count++)
     {
+        //shows us what we already have
+        std::cout << "\n------------------\nIn bowl: \n";
+        for (auto& b : myFood.getIngrediants())
+        {
+            std::cout << b.getName() << ": " << b.getAmount() << "\n";
+        }
+        std::cout << "------------------\n";
+
 
         std::cout << "You may add only 4 Ingredients\n"; //ingredient cap meets for loop conditions
-        std::cout << "ENTER C FOR COOKBOOK!\n";
+        std::cout << "The customer wants a \033[36m" << bro.GetWant().getName() << "\033[0m\n";
         std::cout << "would you like to add to the bowl? \n";
+        std::cout << "\n\n\033[1m ENTER C FOR COOKBOOK! \033[0m\n";
         int num = 1;
         for (auto& o : options.getIngrediants()) //shows list of options
         {
@@ -62,9 +72,8 @@ Recipe Cooking::startCooking()
 
         if (input == "c" || input == "C")
         {
-            Recipe::OpenCookBook("RecipeBook.configSV",',');
+            Recipe::OpenCookBook("RecipeBook.configSV", ',');
         }
-
 
         try
         {
@@ -79,7 +88,7 @@ Recipe Cooking::startCooking()
             else //converts user answer to ingredient
             {
                 Graphics::clear();
-                std::cout << options.bowl_.at(choice - 1).getName() << " added\n";
+                std::cout << "\033[35m" << options.bowl_.at(choice - 1).getName() << " added\033[0m\n\n";
                 myFood.addToBowl(options.bowl_.at(choice - 1));
             }
         }
@@ -97,7 +106,7 @@ Recipe Cooking::startCooking()
     Cooking creation = myFood;
     Recipe myDish = Recipe::CookSomething(creation);
     
-    std::cout << "You made: " << myDish.getName() << "\n";
+    std::cout << "You made: \033[1m" << myDish.getName() << "\033[0m\n";
 
     for (auto& b : myDish.getBowl()) //see what we are mixing together
     {

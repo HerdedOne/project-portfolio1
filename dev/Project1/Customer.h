@@ -15,7 +15,7 @@ public:
 		want_ = findRandomRecipe(); //sets the random recipe
 	}
 
-	Recipe GetWant()
+	Recipe GetWant() const
 	{
 		return want_; //find out what they want
 	}
