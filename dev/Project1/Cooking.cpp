@@ -50,6 +50,7 @@ Recipe Cooking::startCooking()
     {
 
         std::cout << "You may add only 4 Ingredients\n"; //ingredient cap meets for loop conditions
+        std::cout << "enter c for cookbook!\n";
         std::cout << "would you like to add to the bowl? \n";
         int num = 1;
         for (auto& o : options.getIngrediants()) //shows list of options
@@ -59,11 +60,17 @@ Recipe Cooking::startCooking()
         }
         std::cin >> input;
 
+        if (input == "c")
+        {
+            Recipe::OpenCookBook("RecipeBook.configSV",',');
+        }
+
+
         try
         {
             choice = std::stoi(input);
 
-            if (choice < 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
+            if (choice <= 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
             {
                 Graphics::clear();
                 std::cout << "You added air, it did nothing. \n\n";

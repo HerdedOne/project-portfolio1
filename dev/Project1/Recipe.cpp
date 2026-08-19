@@ -2,42 +2,49 @@
 #include "Ingrediant.h"
 #include <vector>
 #include <algorithm> //lets me sort vectors
+#include "Graphics.h"
 
 int Recipe::OpenCookBook(std::string path, char value)
 {
 	//open player cook book and display all data
 	std::ifstream file(path);
 	std::string line;
-
-
+    std::vector<Recipe> recipes;
+    std::string input;
+    int choice;
+    bool reading = true;
 	if (file.is_open())
 	{
-		while (std::getline(file, line))
-		{
-			std::stringstream ss(line);
+        while (std::getline(file, line))
+        {
+            std::stringstream ss(line);
 
-			Recipe food;
 
-			std::string rName, indregiant1, indregiant2, indregiant3, indregiant4;
-			std::getline(ss, rName, value);
-			std::getline(ss, indregiant1, value);
-			std::getline(ss, indregiant2, value);
-			std::getline(ss, indregiant3, value);
-			std::getline(ss, indregiant4, '\n');
+            std::string rName, ingredient1, ingredient2, ingredient3, ingredient4;
+            std::getline(ss, rName, value);
+            std::getline(ss, ingredient1, value);
+            std::getline(ss, ingredient2, value);
+            std::getline(ss, ingredient3, value);
+            std::getline(ss, ingredient4, '\n');
 
-			food.recipeName_ = rName;
-			food.bowl_.addToBowl(indregiant1);
-			food.bowl_.addToBowl(indregiant2);
-			food.bowl_.addToBowl(indregiant3);
-			food.bowl_.addToBowl(indregiant4);
+            if (!ingredient4.empty() && ingredient4.back() == '\r')
+            {
+                ingredient4.pop_back();
+            }
 
-			std::cout << food.recipeName_ << ": \n";
-			for (auto& b : food.bowl_.getIngrediants()) //see what we are mixing together
-			{
-				std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
-			}
-			std::cout << "\n\n";
-		}
+            Cooking bowl;
+
+            bowl.addToBowl(ingredient1);
+            bowl.addToBowl(ingredient2);
+            bowl.addToBowl(ingredient3);
+            bowl.addToBowl(ingredient4);
+
+            Recipe cookingRecipe;
+            cookingRecipe.setBowl(bowl.getIngrediants());
+            cookingRecipe.setName(rName);
+
+            recipes.push_back(cookingRecipe);
+        }
 	}
 	else
 	{
@@ -45,7 +52,51 @@ int Recipe::OpenCookBook(std::string path, char value)
 	}
 	file.close();
 
-	return 0;
+    Graphics::clear();
+
+    while (reading)
+    {
+        std::cout << "Press 0 to LEAVE!\n";
+        int num = 1;
+        for (auto& r : recipes) //shows list of options
+        {
+            std::cout << num << ") " << r.getName() << "\n";
+            num += 1;
+        }
+        std::cin >> input;
+
+        try
+        {
+            choice = std::stoi(input);
+
+            if (choice < 0 || choice > recipes.size() + 1) //checks if this answer is invalid
+            {
+                Graphics::clear();
+                std::cout << "That is not a recipe, please enter a listed number.";
+            }
+            else if (choice == 0)
+            {
+                return 0;
+            }
+            else //converts user answer to ingredient
+            {
+                Graphics::clear();
+                std::cout << recipes.at(choice - 1).getName() << " Recipe:\n";
+                for (auto& i : recipes.at(choice - 1).getBowl())
+                {
+                    std::cout << i.getName() << ": " << i.getAmount() << "\n";
+                }
+                std::cout << "\n\n";
+
+            }
+        }
+        catch (const std::invalid_argument& e)
+        {
+            Graphics::clear();
+            std::cout << "That is not a recipe, please enter a listed number.";
+        }
+    }
+	    return 0;
 }
 
 Recipe Recipe::CookSomething(Cooking creation)

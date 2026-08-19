@@ -16,7 +16,7 @@ int main()
     int choice;
 
     Cooking food;
-    Customer bro;
+    Customer bro; //creates customer
     Recipe myDish;
 
     while (running)
@@ -32,10 +32,10 @@ int main()
             case 1:
                 std::cout << "The game is playing\n\n";
                 // will start cooking
-                bro.SetWant(bro.findRandomRecipe());
-                bro.Dialogue(bro);
+                bro.SetWant(bro.findRandomRecipe()); //makes sure they will want something different every time
+                bro.Dialogue(bro); //ask for what they want
 
-                std::cout << "\nEnter something to begin cooking!\n";
+                std::cout << "\nEnter something to begin cooking!\n"; //makes sure you can read before going into cooking
                 std::cin >> something;
                 myDish = food.startCooking();
                 bro.satisfyCustomer(bro, myDish);
@@ -47,6 +47,7 @@ int main()
             case 3: //testing recipes
                 std::cout << "Opening Recipe Book....\n";
                 Recipe::OpenCookBook("RecipeBook.configSV", ',');
+                Graphics::clear();
                 break;
             default: //entered something invalid
                 Graphics::clear();
