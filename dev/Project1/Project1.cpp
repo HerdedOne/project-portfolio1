@@ -8,7 +8,7 @@
 int main()
 {
     Graphics myGraphics; //allows me to use the graphics class and methods
-    std::cout << "Welcome to Secret Ingrediant!\n"; //title of game
+    std::cout << "Welcome to Secret Ingredient!\n"; //title of game
     bool running = true; //makes game run
 
     std::string input; //will hold user input and change to menu choice
@@ -21,7 +21,7 @@ int main()
 
     while (running)
     {
-        std::cout << "What would you like to do? \n1) PLAY \n2) EXIT \n3) RECIPE BOOK \n\n";
+        std::cout << "What would you like to do? \n2) PLAY \n3) EXIT \n3) RECIPE BOOK \n\n";
         std::cin >> input;
 
         try 
@@ -40,14 +40,14 @@ int main()
                 myDish = food.startCooking();
                 bro.satisfyCustomer(bro, myDish);
                 break;
-            case 2:
-                std::cout << "Goodbye\n";
-                running = false;
-                break;
-            case 3: //testing recipes
+            case 2: //testing recipes
                 std::cout << "Opening Recipe Book....\n";
                 Recipe::OpenCookBook("RecipeBook.configSV", ',');
                 Graphics::clear();
+                break;
+            case 3:
+                std::cout << "Goodbye\n";
+                running = false;
                 break;
             default: //entered something invalid
                 Graphics::clear();
