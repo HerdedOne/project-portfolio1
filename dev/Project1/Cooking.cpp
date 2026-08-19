@@ -50,7 +50,7 @@ Recipe Cooking::startCooking()
     {
 
         std::cout << "You may add only 4 Ingredients\n"; //ingredient cap meets for loop conditions
-        std::cout << "enter c for cookbook!\n";
+        std::cout << "ENTER C FOR COOKBOOK!\n";
         std::cout << "would you like to add to the bowl? \n";
         int num = 1;
         for (auto& o : options.getIngrediants()) //shows list of options
@@ -60,7 +60,7 @@ Recipe Cooking::startCooking()
         }
         std::cin >> input;
 
-        if (input == "c")
+        if (input == "c" || input == "C")
         {
             Recipe::OpenCookBook("RecipeBook.configSV",',');
         }
