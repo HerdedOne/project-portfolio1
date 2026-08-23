@@ -38,6 +38,26 @@ public:
 		return bowl_.getIngrediants();
 	}
 
+	void setName(std::string name)
+	{
+		recipeName_ = name;
+	}
+
+	void setBowl(std::vector<Ingrediant> bowl)
+	{
+		bowl_.emptyBowl();
+		for (auto& ingr : bowl)
+		{
+			bowl_.addToBowl(ingr);
+		}
+	}
+
+	//create a new cookbook file
+	static void CreateCookBook();
+
+	//select a cookbook file
+	static std::string SelectCookBook();
+
 	//look at name of all recipes to choose from
 	static int OpenCookBook(std::string path, char value);
 

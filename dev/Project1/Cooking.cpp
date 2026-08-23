@@ -3,8 +3,9 @@
 #include <string>
 #include "Graphics.h"
 #include "Recipe.h"
+#include "Customer.h"
 
-void Cooking::startCooking()
+Recipe Cooking::startCooking(std::string playerFile, const Customer& bro)
 {
 	//main interface making ingrediants to choose from
     Graphics::clear();
@@ -48,9 +49,19 @@ void Cooking::startCooking()
 
     for (int count = 0; count < 4; count++)
     {
+        //shows us what we already have
+        std::cout << "\n------------------\nIn bowl: \n";
+        for (auto& b : myFood.getIngrediants())
+        {
+            std::cout << b.getName() << ": " << b.getAmount() << "\n";
+        }
+        std::cout << "------------------\n";
+
 
         std::cout << "You may add only 4 Ingredients\n"; //ingredient cap meets for loop conditions
+        std::cout << "The customer wants a \033[36m" << bro.GetWant().getName() << "\033[0m\n";
         std::cout << "would you like to add to the bowl? \n";
+        std::cout << "\n\n\033[1m ENTER C FOR COOKBOOK! \033[0m\n";
         int num = 1;
         for (auto& o : options.getIngrediants()) //shows list of options
         {
@@ -59,11 +70,16 @@ void Cooking::startCooking()
         }
         std::cin >> input;
 
+        if (input == "c" || input == "C")
+        {
+            Recipe::OpenCookBook(playerFile, ',');
+        }
+
         try
         {
             choice = std::stoi(input);
 
-            if (choice < 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
+            if (choice <= 0 || choice > options.bowl_.size()) //checks if this answer is invalid
             {
                 Graphics::clear();
                 std::cout << "You added air, it did nothing. \n\n";
@@ -72,7 +88,7 @@ void Cooking::startCooking()
             else //converts user answer to ingredient
             {
                 Graphics::clear();
-                std::cout << options.bowl_.at(choice - 1).getName() << " added\n";
+                std::cout << "\033[35m" << options.bowl_.at(choice - 1).getName() << " added\033[0m\n\n";
                 myFood.addToBowl(options.bowl_.at(choice - 1));
             }
         }
@@ -89,12 +105,15 @@ void Cooking::startCooking()
 
     Cooking creation = myFood;
     Recipe myDish = Recipe::CookSomething(creation);
-    std::cout << "You made: " << myDish.getName() << "\n";
+    
+    std::cout << "You made: \033[1m" << myDish.getName() << "\033[0m\n";
 
     for (auto& b : myDish.getBowl()) //see what we are mixing together
     {
         std::cout << b.getName() << ":\t" << b.getAmount() << "\n";
     }
     std::cout << "\n\n";
+
+    return myDish;
 }
 

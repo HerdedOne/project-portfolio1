@@ -1,5 +1,32 @@
 #pragma once
+#include <iostream>
+#include <string>
+#include "Ingrediant.h"
+#include "Cooking.h"
+#include "Recipe.h"
 class Customer
 {
+private:
+	Recipe want_; //what they ask for
+public:
+
+	Customer()
+	{
+		want_ = findRandomRecipe(); //sets the random recipe
+	}
+
+	Recipe GetWant() const
+	{
+		return want_; //find out what they want
+	}
+	void SetWant(Recipe newWant)
+	{
+		want_ = newWant; //set what they want
+	}
+
+	Recipe findRandomRecipe();
+	Ingrediant findRandomTwist();
+	static void Dialogue(Customer myCustomer);
+	static void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade, std::string playerFile);
 };
 

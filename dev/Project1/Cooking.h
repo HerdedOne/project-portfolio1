@@ -1,6 +1,10 @@
 #pragma once
 #include "Ingrediant.h"
 #include <vector>
+
+class Recipe; //forward declaration
+class Customer;
+
 class Cooking
 {
 public:
@@ -27,7 +31,7 @@ public:
 		bowl_.clear();
 	} //added for recipe sake, emptys vector
 
-	static void startCooking(); //will boot up the screen
+	static Recipe startCooking(std::string playerFile, const Customer& bro); //will boot up the screen
 
 
 private:
