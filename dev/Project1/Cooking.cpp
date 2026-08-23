@@ -5,7 +5,7 @@
 #include "Recipe.h"
 #include "Customer.h"
 
-Recipe Cooking::startCooking(const Customer& bro)
+Recipe Cooking::startCooking(std::string playerFile, const Customer& bro)
 {
 	//main interface making ingrediants to choose from
     Graphics::clear();
@@ -72,14 +72,14 @@ Recipe Cooking::startCooking(const Customer& bro)
 
         if (input == "c" || input == "C")
         {
-            Recipe::OpenCookBook("RecipeBook.configSV", ',');
+            Recipe::OpenCookBook(playerFile, ',');
         }
 
         try
         {
             choice = std::stoi(input);
 
-            if (choice <= 0 || choice > options.bowl_.size() + 1) //checks if this answer is invalid
+            if (choice <= 0 || choice > options.bowl_.size()) //checks if this answer is invalid
             {
                 Graphics::clear();
                 std::cout << "You added air, it did nothing. \n\n";

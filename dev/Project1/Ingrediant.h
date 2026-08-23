@@ -13,7 +13,7 @@ struct Ingrediant
 		amount_ += 1;
 	}
 
-	std::string getName() //get ingrediant name
+	std::string getName() const //get ingrediant name
 	{
 		return name_;
 	}

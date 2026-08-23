@@ -27,6 +27,6 @@ public:
 	Recipe findRandomRecipe();
 	Ingrediant findRandomTwist();
 	static void Dialogue(Customer myCustomer);
-	static void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade);
+	static void satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade, std::string playerFile);
 };
 

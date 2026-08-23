@@ -52,6 +52,12 @@ public:
 		}
 	}
 
+	//create a new cookbook file
+	static void CreateCookBook();
+
+	//select a cookbook file
+	static std::string SelectCookBook();
+
 	//look at name of all recipes to choose from
 	static int OpenCookBook(std::string path, char value);
 

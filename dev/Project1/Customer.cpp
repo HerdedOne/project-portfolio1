@@ -59,7 +59,7 @@ void Customer::Dialogue(Customer myCustomer)
 	std::cout << "Hello! I am a loyal customer, and I would love a " << "\033[36m" << myCustomer.GetWant().getName() << "\033[0m" << ", MAKE IT FOR ME NOW!" << std::endl;
 }
 
-void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
+void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade, std::string playerFile)
 {
     std::vector<Ingrediant> customerBowl = loyalCustomer.GetWant().getBowl();
     std::vector<Ingrediant> madeBowl = whatYouMade.getBowl();
@@ -100,6 +100,7 @@ void Customer::satisfyCustomer(Customer loyalCustomer, Recipe whatYouMade)
         if (matchCount == 3)
         {
             std::cout << "\033[33mThis is almost what I wanted... Here's the recipe \033[0m\n";
+            Recipe::UpdateCookBook(loyalCustomer.GetWant(), playerFile);
             //GIVE RECIPE TO PLAYER COOKBOOK
         }
         else if (whatYouMade.getName() == "Slop")

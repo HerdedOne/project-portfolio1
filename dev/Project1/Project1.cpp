@@ -18,12 +18,13 @@ int main()
     Cooking food;
     Customer bro; //creates customer
     Recipe myDish;
+    std::string playerFile("default.csv");
 
     while (running)
     {
         Graphics::clear();
 
-        std::cout << "What would you like to do? \n1) PLAY \n2) RECIPE BOOK \n3) EXIT\n\n";
+        std::cout << "What would you like to do? \n1) PLAY \n2) RECIPE BOOK \n3) CREATE NEW BOOK \n4) SELECT BOOK \n5) EXIT\n\n";
 
         std::cout << "\033[1m (Type in a number listed, then press enter.) \033[0m\n";
 
@@ -43,17 +44,28 @@ int main()
 
                 std::cout << "\nEnter something to begin cooking!\n"; //makes sure you can read before going into cooking
                 std::cin >> something;
-                myDish = food.startCooking(bro);
-                bro.satisfyCustomer(bro, myDish);
+                myDish = food.startCooking(playerFile, bro);
+                Recipe::UpdateCookBook(myDish, playerFile);
+
+                bro.satisfyCustomer(bro, myDish, playerFile);
                 std::cout << "\nEnter something to go back to menu!\n"; //makes sure you can read before going into cooking
                 std::cin >> something;
                 break;
             case 2: //testing recipes
                 std::cout << "Opening Recipe Book....\n";
-                Recipe::OpenCookBook("RecipeBook.configSV", ',');
+                Recipe::OpenCookBook(playerFile, ',');
                 Graphics::clear();
                 break;
-            case 3:
+            case 3: //create file
+                std::cout << "Creating....\n";
+                Recipe::CreateCookBook();
+                break;
+            case 4:
+                std::cout << "Selecting....\n";
+                Graphics::clear();
+                playerFile = Recipe::SelectCookBook();
+                break;
+            case 5:
                 std::cout << "Goodbye\n";
                 running = false;
                 break;

@@ -31,7 +31,7 @@ public:
 		bowl_.clear();
 	} //added for recipe sake, emptys vector
 
-	static Recipe startCooking(const Customer& bro); //will boot up the screen
+	static Recipe startCooking(std::string playerFile, const Customer& bro); //will boot up the screen
 
 
 private:
