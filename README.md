@@ -60,7 +60,7 @@ I plan to work on the point system, secret ingredients, and customers next!
 
 ### Week 3
 
-Stay tuned, this stand up is coming soon...
+This past week I've been working on the saving and loading feature. I've also tweaked and properly created recipe adding. My biggest challenge was comparing what you made with the player cook book to make sure nothing was out of place. I was told to try to make things more clear, which I attempted, but I also fixed Ingredient on the title screen haha. My goal for week 4 is a tutorial and any art I want to add.
 
 ### Week 4
 
