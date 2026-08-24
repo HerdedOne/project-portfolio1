@@ -18,7 +18,7 @@ struct Ingrediant
 		return name_;
 	}
 
-	int getAmount() //get ingrediant amount
+	int getAmount() const //get ingrediant amount
 	{
 		return amount_;
 	}
