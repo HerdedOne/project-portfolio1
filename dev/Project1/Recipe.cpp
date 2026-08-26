@@ -19,8 +19,6 @@ int Recipe::OpenCookBook(std::string path, char value)
         while (std::getline(file, line))
         {
             std::stringstream ss(line);
-
-
             std::string rName, ingredient1, ingredient2, ingredient3, ingredient4;
             std::getline(ss, rName, value);
             std::getline(ss, ingredient1, value);
