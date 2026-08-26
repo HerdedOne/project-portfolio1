@@ -64,4 +64,12 @@ This past week I've been working on the saving and loading feature. I've also tw
 
 ### Week 4
 
-My final stand up...
+I've worked on finishing / polishing the load and save system, along with added a throw away option.
+
+I polished some of my features, and made sure to keep new features concise and easy to read.
+
+I faced a weird challenge with reading data from files. but it turns out it was a user error with forgetting where to put the commas, oops!
+
+I'd say I learned the value of breaking a project up into tinier parts, if you do not do the needed planning, it will end up being a large tangled mess that you cannot add anything else onto!
+
+Past this course I plan to make the menu cleaner, and give more variety in the customers + orders + add a points system (it managed to be just to much of a headache to implement at the moment without refactoring my code)
