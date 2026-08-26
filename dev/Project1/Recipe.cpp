@@ -19,8 +19,6 @@ int Recipe::OpenCookBook(std::string path, char value)
         while (std::getline(file, line))
         {
             std::stringstream ss(line);
-
-
             std::string rName, ingredient1, ingredient2, ingredient3, ingredient4;
             std::getline(ss, rName, value);
             std::getline(ss, ingredient1, value);
@@ -164,9 +162,6 @@ void Recipe::UpdateCookBook(Recipe dish, std::string path)
         return;
     }
 
-
-
-
     char value = ',';
     std::ifstream inFile(path); 
     std::string line;
@@ -236,14 +231,15 @@ void Recipe::UpdateCookBook(Recipe dish, std::string path)
     {
         for (auto& r : recipes)
         {
-            outFile << r.getName();
-
             // Loop through ingredients and format back into CSV rows
             auto ingredients = r.getBowl();
+            outFile << r.getName();
             for (const auto& ingredient : ingredients)
             {
-        
-                outFile << "," << ingredient.getName();
+                for (int i = 0; i < ingredient.getAmount(); i++)
+                {
+                    outFile << "," << ingredient.getName();
+                }
             }
             outFile << "\n";
         }
